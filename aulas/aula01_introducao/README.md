@@ -211,45 +211,76 @@ Esse recurso economiza tempo e evita erros de digitação.
 
 ## 2. Baixando proteínas do UniProt
 
-1. Acesse [UniProt](https://www.uniprot.org/).
-2. Pesquise um organismo, por exemplo *Escherichia coli*.
-3. Filtre ou selecione as proteínas **revisadas** (*reviewed*).
-4. Em **Download**, escolha o formato **FASTA**, marque a opção de compactar (*compressed*) e baixe o arquivo.
+Agora utilizaremos um arquivo real contendo proteínas.
 
-No WSL, o comando abaixo abre a pasta atual no Explorador de Arquivos do Windows, o que facilita copiar o arquivo baixado para ela:
+1. Acesse [UniProt](https://www.uniprot.org/).
+2. Na barra de pesquisa, procure por um organismo, por exemplo *Escherichia coli*.
+3. Filtre ou selecione as proteínas **revisadas** (*reviewed*).
+4. Clique em **Download* e escolha o formato **FASTA**. Em seguida marque a opção de compactar (*compressed*) e baixe o arquivo.
+
+Após o download, abra a pasta atual do terminal no Explorador de Arquivos do Windows utilizando:
 
 ```bash
 explorer.exe .
 ```
 
-Confira o download:
+O ponto (`.`) representa o diretório atual.
+
+Esse comando facilita copiar ou mover arquivos entre o Windows e o WSL.
+
+Após copiar o arquivo para o diretório da aula, utilize:
 
 ```bash
 ls
 ```
 
-Às vezes aparece também um arquivo com o sufixo `:Zone.Identifier`. Ele é uma marca de segurança criada pelo Windows para indicar que o arquivo veio da internet. Não é parte dos dados FASTA e pode ser removido:
+Você deverá observar algo semelhante a:
+
+```text
+uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta.gz
+uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta.gz:Zone.Identifier
+```
+
+O arquivo `:Zone.Identifier` pode aparecer quando um arquivo é baixado pelo Windows. Ele contém apenas informações de segurança do sistema operacional e **não faz parte do arquivo FASTA**.
+
+Podemos removê-lo com segurança utilizando:
 
 ```bash
 rm uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta.gz:Zone.Identifier
 ```
 
+Confirme que restou apenas o arquivo FASTA compactado.
+
+```bash
+ls
+```
+
+---
+
 ## 3. Descompactando o arquivo
 
-Arquivos terminados em `.gz` estão compactados com gzip. `gunzip` os descompacta:
+O arquivo foi baixado compactado (`.gz`).
+
+Para descompactá-lo utilizamos o comando `gunzip` (**GNU unzip**).
 
 ```bash
 gunzip uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta.gz
 ```
 
-Esse comando remove a cópia `.gz` e deixa a versão `.fasta`. Para **manter a cópia compactada** e criar também a versão descompactada, use:
+Esse comando remove o arquivo compactado e mantém apenas a versão descompactada.
+
+Caso deseje manter também a versão compactada, utilize:
 
 ```bash
 gzip -dk uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta.gz
 ```
 
-- `-d`: descompacta (*decompress*).
-- `-k`: mantém (*keep*) o arquivo original.
+onde:
+
+- `-d` → descompacta (*decompress*);
+- `-k` → mantém (*keep*) o arquivo original.
+
+---
 
 ## 4. Entendendo e visualizando um arquivo FASTA
 

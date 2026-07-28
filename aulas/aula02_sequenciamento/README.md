@@ -82,12 +82,10 @@ Os dados de sequenciamento serão obtidos no formato FASTQ, que armazena tanto a
 3. Uma linha iniciada por `+`, que separa a sequência dos valores de qualidade;;
 4. Uma sequência de caracteres ASCII que representa a qualidade (escore Phred) de cada base da leitura.
 
-Em sequenciamento *paired-end*, cada fragmento de DNA é lido pelas duas extremidades. Por isso, há dois arquivos: **R1** (ou `_1`) para as leituras *forward* e **R2** (ou `_2`) para as leituras *reverse*.
+Em experimentos de sequenciamento *paired-end* (neste nosso caso), cada fragmento de DNA é sequenciado a partir de suas duas extremidades, gerando duas leituras correspondentes para o mesmo fragmento. Por esse motivo, são gerados dois arquivos FASTQ:
 
-Em experimentos de sequenciamento paired-end (neste nosso caso), cada fragmento de DNA é sequenciado a partir de suas duas extremidades, gerando duas leituras correspondentes para o mesmo fragmento. Por esse motivo, são gerados dois arquivos FASTQ:
-
-R1 (ou `_1`: contém as leituras da primeira extremidade (**forward**).
-R2 (ou `_2`): contém as leituras da segunda extremidade (**reverse**).
+- R1 (ou `_1`: contém as leituras da primeira extremidade (**forward**).
+- R2 (ou `_2`): contém as leituras da segunda extremidade (**reverse**).
 
 As leituras presentes em R1 e R2 são pareadas, ou seja, a primeira leitura de R1 corresponde à primeira leitura de R2, a segunda de R1 corresponde à segunda de R2, e assim sucessivamente.
 

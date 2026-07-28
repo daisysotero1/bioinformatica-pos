@@ -218,7 +218,7 @@ Agora utilizaremos um arquivo real contendo proteínas.
 3. Filtre ou selecione as proteínas **revisadas** (*reviewed*).
 4. Clique em **Download** e escolha o formato **FASTA**. Em seguida marque a opção de compactar (*compressed*) e baixe o arquivo.
 
-Após o download, abra a pasta atual do terminal no Explorador de Arquivos do Windows utilizando:
+Após o download, abra a pasta atual do terminal WSL utilizando:
 
 ```bash
 explorer.exe .

@@ -320,7 +320,8 @@ tail -n 20 uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta
 
 ## 5. Renomeando, movendo e removendo arquivos
 
-Um nome curto torna os comandos mais fáceis de ler. `mv` vem de *move* e serve tanto para renomear como para mover arquivos:
+Um nome curto torna os comandos mais fáceis de ler. `mv` vem de *move* e serve tanto para renomear como para mover arquivos.
+Para renomear:
 
 ```bash
 mv uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta ecoli_reviewed.fasta

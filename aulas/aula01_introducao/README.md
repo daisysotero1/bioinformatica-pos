@@ -216,7 +216,7 @@ Agora utilizaremos um arquivo real contendo proteínas.
 1. Acesse [UniProt](https://www.uniprot.org/).
 2. Na barra de pesquisa, procure por um organismo, por exemplo *Escherichia coli*.
 3. Filtre ou selecione as proteínas **revisadas** (*reviewed*).
-4. Clique em **Download* e escolha o formato **FASTA**. Em seguida marque a opção de compactar (*compressed*) e baixe o arquivo.
+4. Clique em **Download** e escolha o formato **FASTA**. Em seguida marque a opção de compactar (*compressed*) e baixe o arquivo.
 
 Após o download, abra a pasta atual do terminal no Explorador de Arquivos do Windows utilizando:
 

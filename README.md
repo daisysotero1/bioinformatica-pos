@@ -1,6 +1,3 @@
-# Bioinfo_p-s
-Repositório com plano de atividade e scripts utilizados na disciplina de Bioinformática-UEL.
-
 # Bioinformática
 
 Material da disciplina de Bioinformática da Universidade Estadual de Londrina (UEL).

@@ -51,19 +51,27 @@ cd aula2
 
 As ferramentas da disciplina foram instaladas em um **ambiente virtual Conda**. Um ambiente virtual é um espaço isolado que reúne programas e suas versões específicas. Isso evita conflitos entre ferramentas e torna as análises mais reprodutíveis.
 
-Liste os ambientes disponíveis:
+O primeiro passo é listar os ambientes disponíveis:
 
 ```bash
 conda env list
 ```
 
-Você deverá encontrar um ambiente chamado `bioinfo`. Ative-o antes de continuar:
+Você deverá encontrar um ambiente chamado `bioinfo`. Para utilizá-lo, ative-o com o comando:
 
 ```bash
 conda activate bioinfo
 ```
 
-Depois da ativação, o início da linha do terminal deve mostrar `(bioinfo)` em vez de `(base)`. Isso indica que as ferramentas instaladas nesse ambiente estão disponíveis.
+Após a ativação, o início da linha de comando mudará de `(base)` para `(bioinfo)`:
+
+(base) daisy@Daisy:~/Daisy/aula2$
+
+↓
+
+(bioinfo) daisy@Daisy:~/Daisy/aula2$
+
+Essa mudança indica que o ambiente bioinfo está ativo e que todas as ferramentas instaladas nele (como FastQC, MultiQC, Trimmomatic, SPAdes, BUSCO, entre outras) estarão disponíveis para uso durante a aula.
 
 ## 3. Arquivos de sequenciamento e formato FASTQ
 

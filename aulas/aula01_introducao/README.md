@@ -55,47 +55,159 @@ Ao final desta prática você será capaz de:
 
 ## 1. Organizando o diretório da aula
 
-Primeiro, crie uma pasta com seu nome. `mkdir` vem de *make directory* (criar diretório).
+Antes de iniciar qualquer análise, é importante manter os arquivos organizados.
+
+Primeiro, crie um diretório com o seu nome. Todas as atividades da disciplina serão realizadas dentro desse diretório.
+
+Para criar um diretório utilizamos o comando `mkdir`, abreviação de **Make Directory** ("criar diretório").
 
 ```bash
 mkdir Daisy
 ```
 
-Para ver o que existe na pasta atual, use `ls`, de *list* (listar):
+Substitua **Daisy** pelo seu nome.
+
+---
+
+Agora vamos verificar se o diretório foi criado.
+
+Para listar os arquivos e diretórios utilizamos o comando `ls`, abreviação de **List**.
 
 ```bash
 ls
 ```
 
-Entre na pasta criada com `cd`, de *change directory* (mudar de diretório):
+Você deverá observar algo semelhante a:
+
+```text
+Daisy
+```
+
+---
+
+Agora entre no diretório recém-criado utilizando o comando `cd`, abreviação de **Change Directory** ("mudar de diretório").
 
 ```bash
 cd Daisy
+```
+
+Para confirmar em qual diretório você está, utilize:
+
+```bash
+pwd
+```
+
+O comando `pwd` significa **Print Working Directory** e mostra o caminho completo do diretório atual.
+
+---
+
+Vamos verificar se o diretório está vazio.
+
+```bash
 ls
 ```
 
-No início ela estará vazia. Algumas variações úteis de `ls` são:
+Como ele acabou de ser criado, nenhuma informação deverá ser exibida.
+
+---
+
+## Outras formas de utilizar o comando `ls`
+
+O comando `ls` possui diversas opções.
+
+### Listagem detalhada
+
+```bash
+ls -l
+```
+
+Mostra informações detalhadas sobre cada arquivo:
+
+- permissões;
+- proprietário;
+- tamanho;
+- data de modificação.
+
+---
+
+### Mostrar arquivos ocultos
+
+```bash
+ls -a
+```
+
+Arquivos iniciados por um ponto (`.`) são considerados ocultos no Linux.
+
+---
+
+### Listagem detalhada incluindo arquivos ocultos
 
 ```bash
 ls -la
+```
+
+Combina as opções `-l` e `-a`.
+
+---
+
+### Ordenar por data de modificação
+
+```bash
 ls -lrth
 ```
 
-- `-l`: mostra uma listagem detalhada (permissões, proprietário, tamanho e data).
-- `-a`: inclui arquivos ocultos, cujos nomes começam com `.`.
-- `-r`: inverte a ordem da listagem.
-- `-t`: ordena por data de modificação.
-- `-h`: mostra tamanhos de modo legível, como `2K` ou `15M`.
+Onde:
 
-Crie uma subpasta para a primeira aula e entre nela:
+- `-l` → formato longo (*long listing*);
+- `-r` → ordem inversa (*reverse*);
+- `-t` → ordena pela data de modificação (*time*);
+- `-h` → mostra tamanhos em formato legível (*human readable*), como KB, MB e GB.
+
+---
+
+## Criando um diretório para a Aula 1
+
+Dentro do diretório do aluno, vamos criar uma pasta específica para armazenar os arquivos desta aula.
 
 ```bash
 mkdir aula1
-cd aula1
+```
+
+Verifique se ela foi criada.
+
+```bash
 ls -lrth
 ```
 
-> Dica: digite o começo de um nome de arquivo ou pasta e pressione `Tab` para completá-lo automaticamente.
+---
+
+Agora entre no diretório.
+
+```bash
+cd aula1
+```
+
+💡 **Dica**
+
+O terminal possui autocompletar utilizando a tecla **TAB**.
+
+Por exemplo, basta digitar
+
+```bash
+cd au
+```
+
+e pressionar **TAB**.
+
+O terminal completará automaticamente para
+
+```bash
+cd aula1
+```
+
+Esse recurso economiza tempo e evita erros de digitação.
+
+---
 
 ## 2. Baixando proteínas do UniProt
 

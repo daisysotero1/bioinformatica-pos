@@ -349,7 +349,7 @@ Nesta aula utilizaremos o **SPAdes** (*St. Petersburg genome assembler*), um dos
 
 ---
 
-## 10. Voltando para o diretório da Aula 2
+## 1. Voltando para o diretório da Aula 2
 
 Primeiro, volte para o diretório principal da Aula 2:
 
@@ -374,7 +374,7 @@ SRR11011985_2.fastq
 
 ---
 
-## 11. Criando a pasta da montagem
+## 2. Criando a pasta da montagem
 
 Crie um diretório para armazenar todos os arquivos produzidos pelo SPAdes:
 
@@ -386,7 +386,7 @@ Organizar os resultados em diretórios separados facilita a navegação pelos ar
 
 ---
 
-## 12. Verificando a instalação do SPAdes
+## 3. Verificando a instalação do SPAdes
 
 Antes de iniciar a montagem, confirme se o SPAdes está instalado corretamente:
 
@@ -410,7 +410,7 @@ conda activate bioinfo
 
 ---
 
-## 13. Modos de execução do SPAdes
+## 4. Modos de execução do SPAdes
 
 Assim como outras ferramentas utilizadas ao longo da disciplina, o SPAdes possui diversos parâmetros que modificam seu funcionamento. Eles podem ser consultados utilizando a opção `--help`:
 
@@ -428,7 +428,7 @@ Entre as opções mais utilizadas estão:
 
 ---
 
-## 14. Executando a montagem
+## 5. Executando a montagem - Não rodar no terminal neste momento
 
 O comando básico para executar o SPAdes é:
 
@@ -450,7 +450,7 @@ Para evitar esse problema, utilizaremos o comando `nohup`.
 
 ---
 
-## 15. Executando o SPAdes com `nohup`
+## 6. Executando o SPAdes com `nohup`
 
 O `nohup` (*no hang up*) permite que um programa continue sendo executado mesmo após o fechamento do terminal.
 
@@ -471,7 +471,7 @@ Após executar o comando, o terminal retornará imediatamente, permitindo contin
 
 ---
 
-## 16. Entendendo o comando
+## 7. Entendendo o comando
 
 | Elemento | Função |
 |----------|--------|

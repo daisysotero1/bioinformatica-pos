@@ -551,7 +551,7 @@ aula2/
 
 ---
 
-# Prática assíncrona
+# Atividade assíncrona
 
 ### Relatório de avaliação da qualidade de dados de sequenciamento e impacto da trimagem
 

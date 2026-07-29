@@ -292,7 +292,7 @@ Os resultados podem ser interpretados assim:
 | `Reverse Only Surviving` | `_2_unpaired.fastq` | Apenas a leitura reverse passou. |
 | `Dropped` | — | Nenhuma leitura do par passou nos filtros. |
 
-Para análises *paired-end* posteriores, normalmente são usados os dois arquivos `paired`. Os arquivos `unpaired` podem ser usados em análises que aceitam leituras isoladas, mas não devem ser misturados aos pares sem planejamento.
+Para análises *paired-end* posteriores, são usados os dois arquivos `paired`. Os arquivos `unpaired` não devem ser misturados aos pares sem planejamento.
 
 ### Outros filtros úteis do Trimmomatic
 
@@ -309,8 +309,6 @@ Os filtros devem ser definidos a partir do relatório do FastQC e do desenho exp
 | `SLIDINGWINDOW:tamanho:qualidade` | Aplica corte conforme a qualidade média de uma janela. |
 | `MINLEN:n` | Descarta leituras menores que `n` bases após a trimagem. |
 
-> Não aplique todos os filtros automaticamente. Por exemplo, `HEADCROP:10` remove informação biológica e só deve ser usado quando houver uma razão identificada no relatório ou no protocolo de sequenciamento.
-
 Confira os arquivos criados:
 
 ```bash
@@ -322,8 +320,8 @@ ls 2_trimmomatic/
 Faça uma segunda análise com FastQC, agora usando as leituras pareadas que passaram pelos filtros:
 
 ```bash
-mkdir -p 3_fastqc_trimmed
-fastqc -t 4 -o 3_fastqc_trimmed \
+mkdir -p 3_fastqc_trimmed  #fazer um novo diretório para armazenar resultados da nova análise FASTQC
+fastqc -t 4 -o 3_fastqc_trimmed \   #Rodando o FASTQC
   2_trimmomatic/SRR11011985_1_paired.fastq \
   2_trimmomatic/SRR11011985_2_paired.fastq
 ```

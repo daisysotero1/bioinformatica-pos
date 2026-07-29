@@ -549,7 +549,9 @@ aula2/
 
 > A quantidade de arquivos e pastas pode variar dependendo da versão do SPAdes e dos parâmetros utilizados. Os arquivos mais importantes para as próximas etapas serão `contigs.fasta` e `scaffolds.fasta`, que contêm as sequências montadas.
 
-## Atividade assíncrona
+---
+
+# Prática assíncrona
 
 ### Relatório de avaliação da qualidade de dados de sequenciamento e impacto da trimagem
 

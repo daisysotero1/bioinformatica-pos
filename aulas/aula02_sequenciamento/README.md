@@ -428,7 +428,7 @@ Entre as opções mais utilizadas estão:
 
 ---
 
-## 5. Executando a montagem - Não rodar no terminal neste momento
+## 5. Executando a montagem (não execute este comando neste momento)
 
 O comando básico para executar o SPAdes é:
 
@@ -450,7 +450,7 @@ Para evitar esse problema, utilizaremos o comando `nohup`.
 
 ---
 
-## 6. Executando o SPAdes com `nohup`
+## 6. Executando o SPAdes com `nohup` (execute este comando neste momento)
 
 O `nohup` (*no hang up*) permite que um programa continue sendo executado mesmo após o fechamento do terminal.
 

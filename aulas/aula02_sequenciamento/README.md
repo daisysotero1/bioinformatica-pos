@@ -433,13 +433,15 @@ Entre as opções mais utilizadas estão:
 O comando básico para executar o SPAdes é:
 
 ```bash
-spades.py \
+nohup spades.py \
+    --isolate \
     --careful \
     -1 2_trimmomatic/SRR11011985_1_paired.fastq \
     -2 2_trimmomatic/SRR11011985_2_paired.fastq \
     -o 4_assembly \
     -t 4 \
-    -k auto
+    -k auto \
+    > spades.log 2>&1 &
 ```
 
 Entretanto, montagens podem demorar vários minutos ou até horas, dependendo do tamanho do genoma e da quantidade de dados.

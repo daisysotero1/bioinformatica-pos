@@ -548,3 +548,15 @@ aula2/
 ```
 
 > A quantidade de arquivos e pastas pode variar dependendo da versão do SPAdes e dos parâmetros utilizados. Os arquivos mais importantes para as próximas etapas serão `contigs.fasta` e `scaffolds.fasta`, que contêm as sequências montadas.
+
+## Atividade assíncrona
+
+### Relatório de avaliação da qualidade de dados de sequenciamento e impacto da trimagem
+
+Após realizar análises da parte 1 da aula síncrona, responda às seguintes questões:
+
+1. Qual era o objetivo da atividade?
+2. Apresente as figuras do FastQC (antes e após a trimagem) e descreva os principais resultados observados. 
+3. Comparação entre os resultados antes e após a trimagem: Quais métricas já apresentavam boa qualidade antes da trimagem? Quais métricas melhoraram após a trimagem? Alguma métrica permaneceu indicando problemas? A trimagem alterou significativamente o comprimento das reads? Como isso pode impactar análises posteriores?
+
+---

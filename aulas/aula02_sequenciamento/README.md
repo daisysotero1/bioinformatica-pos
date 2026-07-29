@@ -337,6 +337,172 @@ Compare os relatórios **antes** (`1_fastqc_brutos`) e **depois** (`3_fastqc_tri
 
 ---
 
+# Prática síncrona - parte 2
+
+Após avaliar a qualidade dos dados e realizar a trimagem das leituras, o próximo passo em muitos projetos de sequenciamento é a **montagem do genoma** (*genome assembly*).
+
+A montagem consiste em reconstruir sequências maiores (*contigs*) a partir das leituras obtidas no sequenciamento. Como as tecnologias atuais geram milhões de pequenos fragmentos de DNA, utilizamos programas capazes de identificar regiões de sobreposição entre essas leituras para reconstruir a sequência original do genoma.
+
+Nesta aula utilizaremos o **SPAdes** (*St. Petersburg genome assembler*), um dos montadores mais utilizados para genomas bacterianos.
+
+> Execute os comandos no terminal WSL/Linux. Linhas iniciadas por `#` são comentários e não precisam ser executadas.
+
+---
+
+## 10. Voltando para o diretório da Aula 2
+
+Primeiro, volte para o diretório principal da Aula 2:
+
+```bash
+cd ..
+```
+
+A estrutura da pasta deverá estar semelhante a esta:
+
+```text
+(bioinfo) daisy@Daisy:~/Daisy/aula2$ ls
+
+1_fastqc_brutos
+2_trimmomatic
+3_fastqc_trimmed
+SRR11011985
+SRR11011985_1.fastq
+SRR11011985_2.fastq
+
+(bioinfo) daisy@Daisy:~/Daisy/aula2$
+```
+
+---
+
+## 11. Criando a pasta da montagem
+
+Crie um diretório para armazenar todos os arquivos produzidos pelo SPAdes:
+
+```bash
+mkdir 4_assembly
+```
+
+Organizar os resultados em diretórios separados facilita a navegação pelos arquivos e evita misturar resultados de diferentes etapas da análise.
+
+---
+
+## 12. Verificando a instalação do SPAdes
+
+Antes de iniciar a montagem, confirme se o SPAdes está instalado corretamente:
+
+```bash
+spades.py -v
+```
+
+O resultado esperado é semelhante a:
+
+```text
+(bioinfo) daisy@Daisy:~/Daisy/aula2$ spades.py -v
+SPAdes genome assembler v4.3.0
+(bioinfo) daisy@Daisy:~/Daisy/aula2$
+```
+
+> **Importante:** para que o comando funcione, o ambiente virtual `bioinfo` deve estar ativado. Caso o nome `(bioinfo)` não apareça no início da linha de comando, ative o ambiente novamente:
+
+```bash
+conda activate bioinfo
+```
+
+---
+
+## 13. Modos de execução do SPAdes
+
+Assim como outras ferramentas utilizadas ao longo da disciplina, o SPAdes possui diversos parâmetros que modificam seu funcionamento. Eles podem ser consultados utilizando a opção `--help`:
+
+```bash
+spades.py --help
+```
+
+Entre as opções mais utilizadas estão:
+
+| Parâmetro | Função |
+|-----------|--------|
+| `--only-error-correction` | Executa apenas a etapa de correção de erros das leituras. Nenhuma montagem é realizada. |
+| `--only-assembler` | Executa somente a montagem, sem realizar a correção de erros previamente. |
+| `--careful` | Primeiro corrige possíveis erros das leituras e, em seguida, realiza a montagem. Esse modo costuma reduzir erros de montagem e será utilizado nesta aula. |
+
+---
+
+## 14. Executando a montagem
+
+O comando básico para executar o SPAdes é:
+
+```bash
+spades.py \
+    --careful \
+    -1 2_trimmomatic/SRR11011985_1_paired.fastq \
+    -2 2_trimmomatic/SRR11011985_2_paired.fastq \
+    -o 4_assembly \
+    -t 4 \
+    -k auto
+```
+
+Entretanto, montagens podem demorar vários minutos ou até horas, dependendo do tamanho do genoma e da quantidade de dados.
+
+Se executarmos o comando normalmente, o terminal permanecerá ocupado durante todo o processamento. Caso o terminal seja fechado, a montagem será interrompida.
+
+Para evitar esse problema, utilizaremos o comando `nohup`.
+
+---
+
+## 15. Executando o SPAdes com `nohup`
+
+O `nohup` (*no hang up*) permite que um programa continue sendo executado mesmo após o fechamento do terminal.
+
+Além disso, utilizaremos alguns recursos do Linux para salvar todas as mensagens geradas durante a execução em um arquivo de log.
+
+```bash
+nohup spades.py \
+    --careful \
+    -1 2_trimmomatic/SRR11011985_1_paired.fastq \
+    -2 2_trimmomatic/SRR11011985_2_paired.fastq \
+    -o 4_assembly \
+    -t 4 \
+    -k auto \
+    > spades.log 2>&1 &
+```
+
+Após executar o comando, o terminal retornará imediatamente, permitindo continuar utilizando-o normalmente enquanto a montagem é realizada em segundo plano.
+
+---
+
+## 16. Entendendo o comando
+
+| Elemento | Função |
+|----------|--------|
+| `nohup` | Mantém o programa executando mesmo após o fechamento do terminal. |
+| `spades.py` | Executa o montador SPAdes. |
+| `--careful` | Realiza correção de erros antes da montagem. |
+| `-1` | Arquivo FASTQ contendo as leituras forward (R1). |
+| `-2` | Arquivo FASTQ contendo as leituras reverse (R2). |
+| `-o 4_assembly` | Define o diretório onde todos os resultados serão salvos. |
+| `-t 4` | Utiliza até quatro núcleos de processamento. |
+| `-k auto` | Permite que o SPAdes escolha automaticamente os tamanhos de *k-mers* mais adequados para os dados. |
+| `> spades.log` | Salva as mensagens exibidas na tela em um arquivo chamado `spades.log`. |
+| `2>&1` | Redireciona também as mensagens de erro para o mesmo arquivo de log. |
+| `&` | Executa o programa em segundo plano, liberando o terminal para outros comandos. |
+
+Durante a execução, é possível acompanhar o progresso observando o arquivo de log:
+
+```bash
+tail -f spades.log
+```
+
+Para interromper a visualização do log, pressione:
+
+```text
+Ctrl + C
+```
+
+Isso **não interrompe** a montagem; apenas fecha a visualização do arquivo.
+
+---
+
 ## Organização esperada da pasta `aula2`
 
 ```text
@@ -353,9 +519,26 @@ aula2/
 │   ├── SRR11011985_1_unpaired.fastq
 │   ├── SRR11011985_2_paired.fastq
 │   └── SRR11011985_2_unpaired.fastq
-└── 3_fastqc_trimmed/
-    ├── SRR11011985_1_paired_fastqc.html
-    ├── SRR11011985_1_paired_fastqc.zip
-    ├── SRR11011985_2_paired_fastqc.html
-    └── SRR11011985_2_paired_fastqc.zip
+├── 3_fastqc_trimmed/
+│   ├── SRR11011985_1_paired_fastqc.html
+│   ├── SRR11011985_1_paired_fastqc.zip
+│   ├── SRR11011985_2_paired_fastqc.html
+│   └── SRR11011985_2_paired_fastqc.zip
+└── 4_assembly/
+    ├── contigs.fasta
+    ├── scaffolds.fasta
+    ├── assembly_graph.fastg
+    ├── assembly_graph_with_scaffolds.gfa
+    ├── before_rr.fasta
+    ├── corrected/
+    ├── K21/
+    ├── K33/
+    ├── K55/
+    ├── K77/
+    ├── misc/
+    ├── params.txt
+    ├── spades.log
+    └── warnings.log
 ```
+
+> A quantidade de arquivos e pastas pode variar dependendo da versão do SPAdes e dos parâmetros utilizados. Os arquivos mais importantes para as próximas etapas serão `contigs.fasta` e `scaffolds.fasta`, que contêm as sequências montadas.

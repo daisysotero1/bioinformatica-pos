@@ -422,9 +422,15 @@ Entre as opções mais utilizadas estão:
 
 | Parâmetro | Função |
 |-----------|--------|
-| `--only-error-correction` | Executa apenas a etapa de correção de erros das leituras. Nenhuma montagem é realizada. |
-| `--only-assembler` | Executa somente a montagem, sem realizar a correção de erros previamente. |
-| `--careful` | Primeiro corrige possíveis erros das leituras e, em seguida, realiza a montagem. Esse modo costuma reduzir erros de montagem e será utilizado nesta aula. |
+| `--isolate` | Recomendado para dados de organismos isolados com alta cobertura, como a maioria dos genomas bacterianos. Este será o modo utilizado nesta aula. |
+| `--meta` | Utilizado para montagem de dados metagenômicos, provenientes de comunidades de microrganismos. |
+| `--rna` | Utilizado para dados de RNA-Seq. |
+| `--sc` | Utilizado para dados obtidos por sequenciamento de célula única (*single-cell*). |
+| `--only-error-correction` | Executa apenas a etapa de correção de erros das leituras, sem realizar a montagem. |
+| `--only-assembler` | Executa apenas a montagem, assumindo que as leituras já foram corrigidas. |
+| `--careful` | Reduz o número de mismatches e pequenas inserções/deleções (*indels*) na montagem. **Na versão 4.3.0 do SPAdes, esse parâmetro não pode ser utilizado juntamente com `--isolate`.** |
+
+Nesta aula utilizaremos o parâmetro `--isolate`, pois os dados analisados correspondem ao genoma de uma bactéria isolada (*Lactobacillus fermentum*), exatamente o tipo de dado para o qual esse modo foi desenvolvido.
 
 ---
 
@@ -435,19 +441,18 @@ O comando básico para executar o SPAdes é:
 ```bash
 spades.py \
     --isolate \
-    --careful \
     -1 2_trimmomatic/SRR11011985_1_paired.fastq \
     -2 2_trimmomatic/SRR11011985_2_paired.fastq \
     -o 4_assembly \
     -t 4 \
-    -k auto 
+    -k auto
 ```
 
 Entretanto, montagens podem demorar vários minutos ou até horas, dependendo do tamanho do genoma e da quantidade de dados.
 
 Se executarmos o comando normalmente, o terminal permanecerá ocupado durante todo o processamento. Caso o terminal seja fechado, a montagem será interrompida.
 
-Para evitar esse problema, utilizaremos o comando `nohup`.
+Para evitar esse problema, utilizaremos o comando `nohup`, que permite executar programas em segundo plano.
 
 ---
 
@@ -455,12 +460,11 @@ Para evitar esse problema, utilizaremos o comando `nohup`.
 
 O `nohup` (*no hang up*) permite que um programa continue sendo executado mesmo após o fechamento do terminal.
 
-Além disso, utilizaremos alguns recursos do Linux para salvar todas as mensagens geradas durante a execução em um arquivo de log.
+Além disso, utilizaremos recursos do Linux para salvar todas as mensagens produzidas durante a execução em um arquivo de log.
 
 ```bash
 nohup spades.py \
     --isolate \
-    --careful \
     -1 2_trimmomatic/SRR11011985_1_paired.fastq \
     -2 2_trimmomatic/SRR11011985_2_paired.fastq \
     -o 4_assembly \
@@ -469,7 +473,7 @@ nohup spades.py \
     > spades.log 2>&1 &
 ```
 
-Após executar o comando, o terminal retornará imediatamente, permitindo continuar utilizando-o normalmente enquanto a montagem é realizada em segundo plano.
+Após executar o comando, o terminal será liberado imediatamente, enquanto a montagem continuará sendo executada em segundo plano.
 
 ---
 
@@ -477,17 +481,16 @@ Após executar o comando, o terminal retornará imediatamente, permitindo contin
 
 | Elemento | Função |
 |----------|--------|
-| `nohup` | Mantém o programa executando mesmo após o fechamento do terminal. |
+| `nohup` | Mantém o programa em execução mesmo que o terminal seja fechado. |
 | `spades.py` | Executa o montador SPAdes. |
-| `--careful` | Realiza correção de erros antes da montagem. |
-| `--isolate` | Define o tipo de dado, informa ao SPAdes que os dados são de um genoma isolado. |
-| `-1` | Arquivo FASTQ contendo as leituras forward (R1). |
-| `-2` | Arquivo FASTQ contendo as leituras reverse (R2). |
-| `-o 4_assembly` | Define o diretório onde todos os resultados serão salvos. |
-| `-t 4` | Utiliza até quatro núcleos de processamento. |
-| `-k auto` | Permite que o SPAdes escolha automaticamente os tamanhos de *k-mers* mais adequados para os dados. |
-| `> spades.log` | Salva as mensagens exibidas na tela em um arquivo chamado `spades.log`. |
-| `2>&1` | Redireciona também as mensagens de erro para o mesmo arquivo de log. |
+| `--isolate` | Indica ao SPAdes que os dados correspondem ao genoma de um organismo isolado, modo recomendado para a maioria dos genomas bacterianos. |
+| `-1` | Arquivo FASTQ contendo as leituras *forward* (R1). |
+| `-2` | Arquivo FASTQ contendo as leituras *reverse* (R2). |
+| `-o 4_assembly` | Define o diretório onde todos os resultados da montagem serão armazenados. |
+| `-t 4` | Utiliza até quatro núcleos de processamento (*threads*). |
+| `-k auto` | Permite que o SPAdes escolha automaticamente os tamanhos de *k-mers* mais adequados para o comprimento das leituras. |
+| `> spades.log` | Redireciona todas as mensagens exibidas na tela para o arquivo `spades.log`. |
+| `2>&1` | Faz com que as mensagens de erro também sejam gravadas no mesmo arquivo de log. |
 | `&` | Executa o programa em segundo plano, liberando o terminal para outros comandos. |
 
 Durante a execução, é possível acompanhar o progresso observando o arquivo de log:

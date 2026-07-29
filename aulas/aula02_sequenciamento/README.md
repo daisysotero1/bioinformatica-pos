@@ -433,15 +433,14 @@ Entre as opções mais utilizadas estão:
 O comando básico para executar o SPAdes é:
 
 ```bash
-nohup spades.py \
+spades.py \
     --isolate \
     --careful \
     -1 2_trimmomatic/SRR11011985_1_paired.fastq \
     -2 2_trimmomatic/SRR11011985_2_paired.fastq \
     -o 4_assembly \
     -t 4 \
-    -k auto \
-    > spades.log 2>&1 &
+    -k auto 
 ```
 
 Entretanto, montagens podem demorar vários minutos ou até horas, dependendo do tamanho do genoma e da quantidade de dados.
@@ -460,6 +459,7 @@ Além disso, utilizaremos alguns recursos do Linux para salvar todas as mensagen
 
 ```bash
 nohup spades.py \
+    --isolate \
     --careful \
     -1 2_trimmomatic/SRR11011985_1_paired.fastq \
     -2 2_trimmomatic/SRR11011985_2_paired.fastq \
@@ -480,6 +480,7 @@ Após executar o comando, o terminal retornará imediatamente, permitindo contin
 | `nohup` | Mantém o programa executando mesmo após o fechamento do terminal. |
 | `spades.py` | Executa o montador SPAdes. |
 | `--careful` | Realiza correção de erros antes da montagem. |
+| `--isolate` | Define o tipo de dado, informa ao SPAdes que os dados são de um genoma isolado. |
 | `-1` | Arquivo FASTQ contendo as leituras forward (R1). |
 | `-2` | Arquivo FASTQ contendo as leituras reverse (R2). |
 | `-o 4_assembly` | Define o diretório onde todos os resultados serão salvos. |

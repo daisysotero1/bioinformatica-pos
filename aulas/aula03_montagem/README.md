@@ -333,7 +333,7 @@ Os contigs possuem tamanho total de **1.875.984 pb**, enquanto os scaffolds poss
 
 Os scaffolds possuem um tamanho total ligeiramente maior porque podem ser introduzidos gaps, representados por bases desconhecidas (N), entre contigs. Essas regiões contribuem para o tamanho total do scaffold, mesmo sem representar uma sequência determinada.
 
-### Estatísticas detalhadas
+### Estatísticas detalhadas (-a = addition)
 
 Execute:
 
@@ -380,7 +380,19 @@ Para visualizar somente os cabeçalhos das sequências no arquivo de scaffolds, 
 seqkit fx2tab -n -i scaffolds.fasta
 ```
 
-Para visualizar apenas os dez primeiros cabeçalhos:
+| Comando | Significado |
+|---|---|
+| `seqkit stats arquivo.fasta` | Mostra estatísticas básicas do FASTA (número de sequências, tamanho total, mínimo, médio e máximo). |
+| `seqkit stats -a arquivo.fasta` | Mostra estatísticas completas do FASTA, incluindo métricas adicionais como N50, N90, GC% e quantidade de Ns. |
+| `seqkit fx2tab -n -i scaffolds.fasta` | Converte o FASTA em tabela mostrando apenas os nomes/IDs das sequências (headers dos scaffolds). |
+| `seqkit fx2tab -n -l scaffolds.fasta` | Mostra o nome/ID de cada scaffold junto com o comprimento da sequência. |
+| `assembly-stats scaffolds.fasta` | Calcula estatísticas de montagem, como número de sequências, tamanho total, N50, N90 e maior sequência. |
+| `grep -o "N" scaffolds.fasta \| wc -l` | Conta o número total de bases desconhecidas (`N`) presentes na montagem. |
+| `grep -c "N" scaffolds.fasta` | Conta quantas linhas do FASTA possuem pelo menos um `N`. |
+| `grep -i "K21\|K33\|K55" spades.log` | Mostra os diferentes valores de k-mer utilizados pelo SPAdes durante a montagem. |
+| `grep -i "k-mer" spades.log` | Procura informações relacionadas aos k-mers no arquivo de log do SPAdes. |
+
+Para visualizar apenas os dez primeiros cabeçalhos (mesmo comando acima + 'head'):
 
 ```bash
 seqkit fx2tab -n -i scaffolds.fasta | head

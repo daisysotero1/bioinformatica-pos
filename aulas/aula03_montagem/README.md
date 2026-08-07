@@ -107,7 +107,7 @@ Inicialmente, vamos avaliar os arquivos `contigs.fasta` e `scaffolds.fasta`.
 
 ### Contando os contigs
 
-Use o comando abaixo:
+Use o comando abaixo para contar o número de sequências (contigs) no arquivo FASTA:
 
 ```bash
 grep -c '>' contigs.fasta

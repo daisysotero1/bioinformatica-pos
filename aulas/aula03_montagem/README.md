@@ -384,11 +384,9 @@ seqkit fx2tab -n -i scaffolds.fasta
 |---|---|
 | `seqkit` | Ferramenta para manipulação e análise de arquivos FASTA/FASTQ. |
 | `stats` | Calcula estatísticas das sequências (número de sequências, tamanho total, tamanho médio, N50, GC%, etc.). |
-| `-a` | Mostra todas as estatísticas disponíveis (modo completo). |
 | `fx2tab` | Converte arquivos FASTA/FASTQ para formato de tabela. |
 | `-n` | Mostra apenas o nome/ID das sequências (header). |
 | `-i` | Mostra o identificador das sequências. |
-| `-l` | Mostra o comprimento (`length`) de cada sequência. |
 
 Para visualizar apenas os dez primeiros cabeçalhos (mesmo comando acima + 'head'):
 

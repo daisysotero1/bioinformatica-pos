@@ -1,6 +1,6 @@
 # Bioinformática - Gênomica
 
-Material da disciplina de Bioinformática da Universidade Estadual de Londrina (UEL).
+Material da disciplina Pós-Graduação de Bioinformática da Universidade Estadual de Londrina (UEL).
 
 ## Docente
 

@@ -382,15 +382,13 @@ seqkit fx2tab -n -i scaffolds.fasta
 
 | Comando | Significado |
 |---|---|
-| `seqkit stats arquivo.fasta` | Mostra estatísticas básicas do FASTA (número de sequências, tamanho total, mínimo, médio e máximo). |
-| `seqkit stats -a arquivo.fasta` | Mostra estatísticas completas do FASTA, incluindo métricas adicionais como N50, N90, GC% e quantidade de Ns. |
-| `seqkit fx2tab -n -i scaffolds.fasta` | Converte o FASTA em tabela mostrando apenas os nomes/IDs das sequências (headers dos scaffolds). |
-| `seqkit fx2tab -n -l scaffolds.fasta` | Mostra o nome/ID de cada scaffold junto com o comprimento da sequência. |
-| `assembly-stats scaffolds.fasta` | Calcula estatísticas de montagem, como número de sequências, tamanho total, N50, N90 e maior sequência. |
-| `grep -o "N" scaffolds.fasta \| wc -l` | Conta o número total de bases desconhecidas (`N`) presentes na montagem. |
-| `grep -c "N" scaffolds.fasta` | Conta quantas linhas do FASTA possuem pelo menos um `N`. |
-| `grep -i "K21\|K33\|K55" spades.log` | Mostra os diferentes valores de k-mer utilizados pelo SPAdes durante a montagem. |
-| `grep -i "k-mer" spades.log` | Procura informações relacionadas aos k-mers no arquivo de log do SPAdes. |
+| `seqkit` | Ferramenta para manipulação e análise de arquivos FASTA/FASTQ. |
+| `stats` | Calcula estatísticas das sequências (número de sequências, tamanho total, tamanho médio, N50, GC%, etc.). |
+| `-a` | Mostra todas as estatísticas disponíveis (modo completo). |
+| `fx2tab` | Converte arquivos FASTA/FASTQ para formato de tabela. |
+| `-n` | Mostra apenas o nome/ID das sequências (header). |
+| `-i` | Mostra o identificador das sequências. |
+| `-l` | Mostra o comprimento (`length`) de cada sequência. |
 
 Para visualizar apenas os dez primeiros cabeçalhos (mesmo comando acima + 'head'):
 

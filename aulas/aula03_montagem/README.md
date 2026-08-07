@@ -394,9 +394,6 @@ Para visualizar apenas os dez primeiros cabeçalhos (mesmo comando acima + 'head
 seqkit fx2tab -n -i scaffolds.fasta | head
 ```
 
-- `fx2tab`: converte informações de arquivos FASTA ou FASTQ em formato de tabela;
-- `-n`: mostra o nome ou cabeçalho da sequência;
-- `-i`: mostra o identificador;
 - `head`: exibe apenas as primeiras linhas.
 
 ---

@@ -331,7 +331,7 @@ scaffolds.fasta  FASTA   DNA        391  1,876,502       56  4,799.2  114,875
 
 Os contigs possuem tamanho total de **1.875.984 pb**, enquanto os scaffolds possuem tamanho total de **1.876.502 pb**.
 
-Os scaffolds possuem um tamanho total ligeiramente maior porque podem conter regiões desconhecidas representadas pela letra `N`.
+Os scaffolds possuem um tamanho total ligeiramente maior porque podem ser introduzidos gaps, representados por bases desconhecidas (N), entre contigs. Essas regiões contribuem para o tamanho total do scaffold, mesmo sem representar uma sequência determinada.
 
 ### Estatísticas detalhadas
 

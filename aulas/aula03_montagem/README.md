@@ -485,40 +485,26 @@ O tamanho total da montagem foi de aproximadamente **1,88 Mb**, com conteúdo GC
 
 O valor de **N50 de 43.280 pb** indica que uma parcela importante da montagem está concentrada em scaffolds relativamente longos. Quanto maior o N50, menor tende a ser a fragmentação da montagem, embora essa métrica deva ser interpretada junto a outras informações.
 
-A presença de **600 bases N** e **6 lacunas** mostra que ainda existem regiões cuja sequência exata não pôde ser determinada. Essas lacunas são esperadas em montagens feitas com leituras curtas, principalmente em regiões repetitivas do genoma.
-
-De forma geral, a montagem apresentou resultados adequados para as próximas etapas de análise, como avaliação de completude, predição de genes e anotação funcional.
-
 ---
 
 ## Perguntas de revisão
 
-1. O que é um contig?
+1. O que é um contig e scaffold?
 
-2. O que é um scaffold?
+2. O que representa a letra `N` em um scaffold?
 
-3. Qual é a principal diferença entre contigs e scaffolds?
+3. Quantos contigs e scaffolds foram encontrados nesta montagem?
 
-4. O que representa a letra `N` em um scaffold?
+4. Qual foi o valor de N50 dos scaffolds?
 
-5. Quantos contigs foram encontrados nesta montagem?
+5. Qual foi o tamanho total da montagem?
 
-6. Quantos scaffolds foram encontrados nesta montagem?
+6. Qual foi o conteúdo GC aproximado da montagem?
 
-7. Qual foi o valor de N50 dos scaffolds?
+7. Para que serve o arquivo `params.txt` e `spades.log`?
 
-8. O que significa N50?
+8. O que são k-mers?
 
-9. Qual foi o tamanho total da montagem?
+9. Quais valores de k-mer foram usados pelo SPAdes nesta montagem?
 
-10. Qual foi o conteúdo GC aproximado da montagem?
-
-11. Para que serve o arquivo `params.txt`?
-
-12. Para que serve o arquivo `spades.log`?
-
-13. O que são k-mers?
-
-14. Quais valores de k-mer foram usados pelo SPAdes nesta montagem?
-
-15. Qual comando pode ser utilizado para contar o número de sequências em um arquivo FASTA?
+10. Qual comando pode ser utilizado para contar o número de sequências em um arquivo FASTA?

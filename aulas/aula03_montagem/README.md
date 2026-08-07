@@ -1,7 +1,5 @@
 # Aula 3 – Avaliação da qualidade da montagem
 
-**Data:** ___/___
-
 ## Conteúdo
 
 - Avaliação do resultado da montagem
@@ -10,7 +8,6 @@
 - Parâmetros da montagem
 - k-mers
 - Estatísticas com SeqKit
-- N50, tamanho total e conteúdo GC
 - Estatísticas com Assembly-stats
 
 ---

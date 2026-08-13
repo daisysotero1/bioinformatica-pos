@@ -515,7 +515,7 @@ cd Daisy
 ou, caso esteja no diretório da parte 1 (`aula2_parte1`), digite no terminal:
 
 ```bash
-cd Daisy
+cd ..
 ```
 
 Crie a pasta da segunda aula parte 2 e confirme sua criação:

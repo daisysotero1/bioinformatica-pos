@@ -496,6 +496,43 @@ grep -c "^>tr|" ecoli_reviewed.fasta
 
 Se o arquivo foi baixado com o filtro **reviewed**, é esperado que a busca por `tr|` retorne zero resultados.
 
+## Comandos básicos com SeqKit
+
+### Visualizar as primeiras sequências
+
+```bash
+seqkit head -n 5 ecoli_reviewed.fasta
+```
+
+### Obter estatísticas do FASTA
+```bash
+seqkit stats ecoli_reviewed.fasta
+```
+
+### Contar o número de proteínas
+```bash
+seqkit fx2tab -n ecoli_reviewed.fasta | wc -l
+```
+
+### Selecionar proteínas com pelo menos 500 aminoácidos
+```bash
+seqkit seq -m 500 ecoli_reviewed.fasta
+```
+
+### Selecionar proteínas com no máximo 100 aminoácidos
+```bash
+seqkit seq -m 500 ecoli_reviewed.fasta > proteinas_500aa.fasta
+```
+
+### Salvar as proteínas filtradas em um novo arquivo
+```bash
+seqkit seq -M 100 ecoli_reviewed.fasta
+```
+
+### Remover sequências duplicadas
+```bash
+seqkit rmdup ecoli_reviewed.fasta
+```
 
 # Aula 2: Parte 2 - Controle de qualidade (QC)
 

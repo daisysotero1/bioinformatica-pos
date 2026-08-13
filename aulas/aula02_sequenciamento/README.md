@@ -519,12 +519,12 @@ seqkit fx2tab -n ecoli_reviewed.fasta | wc -l
 seqkit seq -m 500 ecoli_reviewed.fasta
 ```
 
-### Selecionar proteínas com no máximo 100 aminoácidos
+### Selecionar proteínas com pelo menos 500 aminoácidos e salvar em novo arquivo
 ```bash
 seqkit seq -m 500 ecoli_reviewed.fasta > proteinas_500aa.fasta
 ```
 
-### Salvar as proteínas filtradas em um novo arquivo
+### Selecionar proteínas com no máximo 100 aminoácidos
 ```bash
 seqkit seq -M 100 ecoli_reviewed.fasta
 ```

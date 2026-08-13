@@ -524,6 +524,8 @@ seqkit seq -m 500 ecoli_reviewed.fasta
 seqkit seq -m 500 ecoli_reviewed.fasta > proteinas_500aa.fasta
 ```
 
+## Qual comando para contar proteínas do novo arquivo filtrado 'proteinas_500aa.fasta'?
+
 ### Selecionar proteínas com no máximo 100 aminoácidos
 ```bash
 seqkit seq -M 100 ecoli_reviewed.fasta

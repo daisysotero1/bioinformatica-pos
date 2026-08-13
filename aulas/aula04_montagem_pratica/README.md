@@ -21,6 +21,11 @@ Primeiro, volte para o diretório principal da Aula 2 (aula2_parte2):
 ```bash
 cd ..
 ```
+Em seguida veja o que há dentro desse diretório:
+
+```bash
+ls -lrth
+```
 
 A estrutura da pasta deverá estar semelhante a esta:
 

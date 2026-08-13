@@ -11,6 +11,12 @@
 - Tipos de dados ômicos
 - Tecnologias de sequenciamento
 - Bancos de dados biológicos (NCBI, UniProt, KEGG e PDB)
+- Formatos de arquivos
+- Qualidade de sequenciamento
+- Scores Phred
+- Adaptadores
+- Controle de qualidade
+- Trimagem
 
 
 Referencias:

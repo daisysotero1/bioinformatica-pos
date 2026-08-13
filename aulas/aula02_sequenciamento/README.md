@@ -519,16 +519,21 @@ seqkit fx2tab -n ecoli_reviewed.fasta | wc -l
 seqkit seq -m 500 ecoli_reviewed.fasta
 ```
 
-### Selecionar proteínas com pelo menos 500 aminoácidos e salvar em novo arquivo
+### Selecionar proteínas com pelo menos (no mínimo 'm') 500 aminoácidos e salvar em novo arquivo
 ```bash
 seqkit seq -m 500 ecoli_reviewed.fasta > proteinas_500aa.fasta
 ```
 
 ## Qual comando para contar proteínas do novo arquivo filtrado 'proteinas_500aa.fasta'?
 
-### Selecionar proteínas com no máximo 100 aminoácidos
+### Selecionar proteínas com no máximo ('M') 100 aminoácidos
 ```bash
-seqkit seq -M 100 ecoli_reviewed.fasta
+seqkit seq -M 100 ecoli_reviewed.fasta > proteinas_ate100aa.fasta
+```
+
+### Selecionar proteínas no mínimo 101 aa + no máximo 499 aa
+```bash
+seqkit seq -m 101 -M 499 ecoli_reviewed.fasta > proteinas_101_499aa.fasta
 ```
 
 ### Remover sequências duplicadas

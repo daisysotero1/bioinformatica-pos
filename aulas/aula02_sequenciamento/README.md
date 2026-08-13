@@ -1,18 +1,6 @@
-# Aula 2 – Introdução ao Terminal para Análise de Sequências Biológicas
-
 **Data:** 21/08
 
-## Conteúdo - Manhã
-
-- Apresentação da disciplina
-- O que é Bioinformática e suas aplicações
-- Fluxo geral de uma análise bioinformática
-  - FASTQ → Controle de qualidade → Montagem/Alinhamento → Anotação → Interpretação
-- Tipos de dados ômicos
-- Tecnologias de sequenciamento
-- Bancos de dados biológicos (NCBI, UniProt, KEGG e PDB)
-
----
+# Aula 2: Parte 1 - Introdução ao terminal para análise de sequências biológicas
 
 ## Prática síncrona
 
@@ -498,17 +486,7 @@ grep -c "^>tr|" ecoli_reviewed.fasta
 Se o arquivo foi baixado com o filtro **reviewed**, é esperado que a busca por `tr|` retorne zero resultados.
 
 
-
-## Conteúdo - Tarde
-
-- Formatos de arquivos
-- Qualidade de sequenciamento
-- Scores Phred
-- Adaptadores
-- Controle de qualidade
-- Trimagem
-
----
+# Aula 2: Parte 2 - Controle de qualidade (QC)
 
 ## Prática síncrona
 

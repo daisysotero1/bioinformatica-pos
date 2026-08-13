@@ -41,8 +41,6 @@ drwxr-xr-x 2 daisy daisy 4.0K Aug 13 14:08 2_trimmomatic
 drwxr-xr-x 2 daisy daisy 4.0K Aug 13 14:11 3_fastqc_trimmed
 ```
 
----
-
 ## 2. Criando a pasta da montagem
 
 Crie um diretório para armazenar todos os arquivos produzidos pelo SPAdes:

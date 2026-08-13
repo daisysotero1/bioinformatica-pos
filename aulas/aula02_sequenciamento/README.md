@@ -158,7 +158,7 @@ Onde:
 Dentro do diretório do aluno, vamos criar uma pasta específica para armazenar os arquivos desta aula.
 
 ```bash
-mkdir aula1
+mkdir aula2_parte1
 ```
 
 Verifique se ela foi criada.
@@ -172,7 +172,7 @@ ls -lrth
 Agora entre no diretório.
 
 ```bash
-cd aula1
+cd aula2_parte1
 ```
 
 💡 **Dica**
@@ -190,7 +190,7 @@ e pressionar **TAB**.
 O terminal completará automaticamente para
 
 ```bash
-cd aula1
+cd aula2_parte1
 ```
 
 Esse recurso economiza tempo e evita erros de digitação.
@@ -502,20 +502,20 @@ Entre na pasta principal criada na Aula 1. Substitua `Daisy` pelo nome que você
 cd Daisy
 ```
 
-Crie a pasta da segunda aula e confirme sua criação:
+Crie a pasta da segunda aula parte 2 e confirme sua criação:
 
 ```bash
-mkdir aula2
+mkdir aula2_parte2
 ls -lrth
 ```
 
 Entre na pasta:
 
 ```bash
-cd aula2
+cd aula2_parte2
 ```
 
-> Dica: use `Tab` para completar nomes automaticamente. Por exemplo, digite `cd au` e pressione `Tab`; o terminal completará o nome `aula2` quando não houver ambiguidade.
+> Dica: use `Tab` para completar nomes automaticamente. Por exemplo, digite `cd au` e pressione `Tab`; o terminal completará o nome `aula2` nesse caso vai haver ambiguidade, entao continue digitando `aula2_parte2` .
 
 ## 2. Ambiente virtual e ferramentas
 
@@ -541,7 +541,7 @@ Após a ativação, o início da linha de comando mudará de `(base)` para `(bio
 
 (bioinfo) daisy@Daisy:~/Daisy/aula2$
 
-Essa mudança indica que o ambiente bioinfo está ativo e que todas as ferramentas instaladas nele (como FastQC, MultiQC, Trimmomatic, SPAdes, BUSCO, entre outras) estarão disponíveis para uso durante a aula.
+Essa mudança indica que o ambiente bioinfo está ativo e que todas as ferramentas instaladas nele (como FastQC, Trimmomatic, SPAdes, entre outras) estarão disponíveis para uso durante a aula.
 
 ## 3. Arquivos de sequenciamento e formato FASTQ
 

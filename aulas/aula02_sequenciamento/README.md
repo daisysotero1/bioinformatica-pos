@@ -414,13 +414,17 @@ Assim, o comando mostra linhas que contêm **ATPase**, ou **polymerase** ou **he
 
 ### Mostrar linhas que não contêm um termo
 
-`-v` vem de *invert match*: inverte a seleção e exibe as linhas que **não** correspondem ao padrão.
+`-v` vem de *invert match*: inverte a seleção e exibe as linhas que **não** correspondem ao padrão, ou seja, mostra as linhas que NÃO contêm a palavra.
 
 ```bash
 grep -v "hypothetical" ecoli_reviewed.fasta
 ```
 
 Em FASTA, esse comando também mostrará linhas de sequência, pois elas normalmente não possuem a palavra pesquisada. Para trabalhar apenas com cabeçalhos, faça primeiro a seleção de linhas iniciadas em `>`.
+
+```bash
+grep "^>" ecoli_reviewed.fasta | grep -v "hypothetical"
+```
 
 ## 7. Pesquisando vários genes a partir de uma lista
 

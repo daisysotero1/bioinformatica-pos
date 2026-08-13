@@ -449,7 +449,7 @@ ls
 cat genes.txt
 ```
 
-Use `grep -f` para ler os padrões de um arquivo (*file*), em vez de digitá-los no comando:
+Use `grep -f` para ler os padrões de um arquivo (*file*):
 
 ```bash
 grep -f genes.txt ecoli_reviewed.fasta
@@ -461,7 +461,14 @@ Para contar as linhas retornadas, use o operador `|`, chamado *pipe*. Ele envia 
 grep -f genes.txt ecoli_reviewed.fasta | wc -l
 ```
 
-> Esse total representa linhas encontradas, não necessariamente o número de proteínas, pois um termo pode aparecer em mais de uma linha ou em mais de uma proteína.
+> Esse total representa o número de linhas encontradas, não necessariamente o número de proteínas, pois uma proteína pode ocupar várias linhas no arquivo FASTA.
+> Para contar apenas as proteínas correspondentes aos padrões de genes.txt, primeiro filtramos os cabeçalhos FASTA, que começam com >, e depois contamos essas linhas:
+```bash
+grep -f genes.txt ecoli_reviewed.fasta | grep "^>" | wc -l
+```
+- grep -f genes.txt → procura os padrões listados em genes.txt;
+- grep "^>" → mantém apenas os cabeçalhos das proteínas;
+- wc -l → conta quantos cabeçalhos foram encontrados.
 
 ## 8. Exemplos finais de filtragem
 

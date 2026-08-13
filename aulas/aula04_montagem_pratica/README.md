@@ -179,39 +179,28 @@ Isso **não interrompe** a montagem; apenas fecha a visualização do arquivo.
 ## Organização esperada da pasta `aula2`
 
 ```text
-aula2/
-├── SRR11011985_1.fastq
-├── SRR11011985_2.fastq
-├── 1_fastqc_brutos/
-│   ├── SRR11011985_1_fastqc.html
-│   ├── SRR11011985_1_fastqc.zip
-│   ├── SRR11011985_2_fastqc.html
-│   └── SRR11011985_2_fastqc.zip
-├── 2_trimmomatic/
-│   ├── SRR11011985_1_paired.fastq
-│   ├── SRR11011985_1_unpaired.fastq
-│   ├── SRR11011985_2_paired.fastq
-│   └── SRR11011985_2_unpaired.fastq
-├── 3_fastqc_trimmed/
-│   ├── SRR11011985_1_paired_fastqc.html
-│   ├── SRR11011985_1_paired_fastqc.zip
-│   ├── SRR11011985_2_paired_fastqc.html
-│   └── SRR11011985_2_paired_fastqc.zip
-└── 4_assembly/
-    ├── contigs.fasta
-    ├── scaffolds.fasta
-    ├── assembly_graph.fastg
-    ├── assembly_graph_with_scaffolds.gfa
-    ├── before_rr.fasta
-    ├── corrected/
-    ├── K21/
-    ├── K33/
-    ├── K55/
-    ├── K77/
-    ├── misc/
-    ├── params.txt
-    ├── spades.log
-    └── warnings.log
+ ls -lrth 4_assembly/
+-rw-r--r-- 1 daisy daisy  256 Aug 13 14:19 input_dataset.yaml
+-rw-r--r-- 1 daisy daisy 1.4K Aug 13 14:19 params.txt
+-rw-r--r-- 1 daisy daisy   67 Aug 13 14:19 dataset.info
+-rw-r--r-- 1 daisy daisy 2.4K Aug 13 14:19 run_spades.sh
+-rw-r--r-- 1 daisy daisy 4.2K Aug 13 14:19 run_spades.yaml
+drwxr-xr-x 4 daisy daisy 4.0K Aug 13 14:21 K21
+drwxr-xr-x 4 daisy daisy 4.0K Aug 13 14:22 K33
+drwxr-xr-x 4 daisy daisy 4.0K Aug 13 14:25 K55
+-rw-r--r-- 1 daisy daisy 1.9M Aug 13 14:25 before_rr.fasta
+-rw-r--r-- 1 daisy daisy 1.9M Aug 13 14:25 assembly_graph_after_simplification.gfa
+-rw-r--r-- 1 daisy daisy  41K Aug 13 14:25 scaffolds.paths
+-rw-r--r-- 1 daisy daisy 1.9M Aug 13 14:25 contigs.fasta
+-rw-r--r-- 1 daisy daisy 1.9M Aug 13 14:25 scaffolds.fasta
+-rw-r--r-- 1 daisy daisy 1.9M Aug 13 14:25 assembly_graph_with_scaffolds.gfa
+-rw-r--r-- 1 daisy daisy  42K Aug 13 14:25 contigs.paths
+-rw-r--r-- 1 daisy daisy 3.9M Aug 13 14:25 assembly_graph.fastg
+drwxr-xr-x 2 daisy daisy 4.0K Aug 13 14:25 tmp
+drwxr-xr-x 2 daisy daisy 4.0K Aug 13 14:25 misc
+drwxr-xr-x 2 daisy daisy 4.0K Aug 13 14:25 pipeline_state
+-rw-r--r-- 1 daisy daisy 112K Aug 13 14:25 spades.log
+
 ```
 
 > A quantidade de arquivos e pastas pode variar dependendo da versão do SPAdes e dos parâmetros utilizados. Os arquivos mais importantes para as próximas etapas serão `contigs.fasta` e `scaffolds.fasta`, que contêm as sequências montadas.
@@ -237,7 +226,7 @@ cd Daisy/
 Entre na pasta da Aula 2:
 
 ```bash
-cd aula2/
+cd aula2_parte2/
 ```
 
 Entre no diretório que contém o resultado da montagem feita com SPAdes:
@@ -249,7 +238,7 @@ cd 4_assembly/
 O caminho final deverá ser semelhante a este:
 
 ```bash
-(base) daisy@Daisy:~/Daisy/aula2/4_assembly$
+(base) /home/daisy/Daisy/aula2_parte2/4_assembly
 ```
 
 ## 2. Visualizando os arquivos gerados pelo SPAdes
@@ -263,26 +252,9 @@ ls
 Alguns dos arquivos e diretórios gerados podem ser:
 
 ```text
-K21
-K33
-K55
-assembly_graph.fastg
-assembly_graph_after_simplification.gfa
-assembly_graph_with_scaffolds.gfa
-before_rr.fasta
-contigs.fasta
-contigs.paths
-dataset.info
-input_dataset.yaml
-misc
-params.txt
-pipeline_state
-run_spades.sh
-run_spades.yaml
-scaffolds.fasta
-scaffolds.paths
-spades.log
-tmp
+K21  assembly_graph.fastg                     before_rr.fasta  dataset.info        params.txt      run_spades.yaml  spades.log
+K33  assembly_graph_after_simplification.gfa  contigs.fasta    input_dataset.yaml  pipeline_state  scaffolds.fasta  tmp
+K55  assembly_graph_with_scaffolds.gfa        contigs.paths    misc                run_spades.sh   scaffolds.paths
 ```
 
 ### O que significa cada arquivo?
@@ -491,7 +463,7 @@ conda activate bioinfo
 Após a ativação, o terminal deverá mostrar algo semelhante a:
 
 ```bash
-(bioinfo) daisy@Daisy:~/Daisy/aula2/4_assembly$
+(bioinfo) daisy@Daisy:~/Daisy/aula2_parte2/4_assembly$
 ```
 
 ---

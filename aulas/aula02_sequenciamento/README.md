@@ -1,4 +1,4 @@
-# Aula 1 – Introdução à Bioinformática
+# Aula 2 – Introdução ao Terminal para Análise de Sequências Biológicas
 
 **Data:** 21/08
 

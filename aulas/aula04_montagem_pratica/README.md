@@ -14,9 +14,9 @@ Nesta aula utilizaremos o **SPAdes** (*St. Petersburg genome assembler*), um dos
 
 ---
 
-## 1. Voltando para o diretório da Aula 2
+## 1. Voltando para o diretório da Aula 2 - parte 2
 
-Primeiro, volte para o diretório principal da Aula 2:
+Primeiro, volte para o diretório principal da Aula 2 (aula2_parte2):
 
 ```bash
 cd ..

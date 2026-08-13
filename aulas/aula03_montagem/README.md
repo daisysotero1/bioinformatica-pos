@@ -19,6 +19,8 @@
 
 ### Leitura de artigo científico
 
+Yahav, T., Privman, E. A comparative analysis of methods for de novo assembly of hymenopteran genomes using either haploid or diploid samples. Sci Rep 9, 6480 (2019). https://doi.org/10.1038/s41598-019-42795-6.
+
 Após a leitura do artigo, responda às seguintes questões:
 
 1. Qual era o objetivo do estudo?

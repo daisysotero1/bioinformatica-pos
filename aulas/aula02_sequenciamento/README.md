@@ -410,7 +410,7 @@ grep -B 1 -A 2 "ATPase" ecoli_reviewed.fasta
 grep -E "ATPase|polymerase|helicase" ecoli_reviewed.fasta
 ```
 
-Assim, o comando mostra linhas que contêm **ATPase**, **polymerase** ou **helicase**.
+Assim, o comando mostra linhas que contêm **ATPase**, ou **polymerase** ou **helicase**.
 
 ### Mostrar linhas que não contêm um termo
 

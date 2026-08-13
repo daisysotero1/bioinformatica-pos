@@ -1,8 +1,505 @@
-# Aula 2 – Controle de qualidade de sequenciamento
+# Aula 1 – Introdução à Bioinformática
 
 **Data:** 21/08
 
-## Conteúdo - parte 1
+## Conteúdo - Manhã
+
+- Apresentação da disciplina
+- O que é Bioinformática e suas aplicações
+- Fluxo geral de uma análise bioinformática
+  - FASTQ → Controle de qualidade → Montagem/Alinhamento → Anotação → Interpretação
+- Tipos de dados ômicos
+- Tecnologias de sequenciamento
+- Bancos de dados biológicos (NCBI, UniProt, KEGG e PDB)
+
+---
+
+## Prática síncrona
+
+### Introdução ao Bash
+
+Comandos abordados:
+
+- `pwd`
+- `ls`
+- `cd`
+- `mkdir`
+- `cp`
+- `mv`
+- `rm`
+- `cat`
+- `head`
+- `tail`
+- `grep`
+
+### Formato de arquivos
+
+- FASTA
+
+---
+
+# Começando
+
+Durante toda a disciplina utilizaremos o **terminal Linux (Bash)** para organizar arquivos, executar programas e analisar dados biológicos. Nesta primeira prática aprenderemos os principais comandos de navegação e manipulação de arquivos, utilizando um conjunto de proteínas obtido do banco de dados UniProt.
+
+Ao final desta prática você será capaz de:
+
+- navegar entre diretórios;
+- criar e organizar pastas;
+- copiar, mover e remover arquivos;
+- visualizar o conteúdo de arquivos FASTA;
+- pesquisar informações utilizando o comando `grep`.
+
+---
+> Os comandos abaixo devem ser digitados no terminal. Os trechos iniciados por `#` são comentários explicativos e não precisam ser executados.
+
+## 1. Organizando o diretório da aula
+
+Antes de iniciar qualquer análise, é importante manter os arquivos organizados.
+
+Primeiro, crie um diretório com o seu nome. Todas as atividades da disciplina serão realizadas dentro desse diretório.
+
+Para criar um diretório utilizamos o comando `mkdir`, abreviação de **Make Directory** ("criar diretório").
+
+```bash
+mkdir Daisy
+```
+
+Substitua **Daisy** pelo seu nome.
+
+---
+
+Agora vamos verificar se o diretório foi criado.
+
+Para listar os arquivos e diretórios utilizamos o comando `ls`, abreviação de **List**.
+
+```bash
+ls
+```
+
+Você deverá observar algo semelhante a:
+
+```text
+Daisy
+```
+
+---
+
+Agora entre no diretório recém-criado utilizando o comando `cd`, abreviação de **Change Directory** ("mudar de diretório").
+
+```bash
+cd Daisy
+```
+
+Para confirmar em qual diretório você está, utilize:
+
+```bash
+pwd
+```
+
+O comando `pwd` significa **Print Working Directory** e mostra o caminho completo do diretório atual.
+
+---
+
+Vamos verificar se o diretório está vazio.
+
+```bash
+ls
+```
+
+Como ele acabou de ser criado, nenhuma informação deverá ser exibida.
+
+---
+
+## Outras formas de utilizar o comando `ls`
+
+O comando `ls` possui diversas opções.
+
+### Listagem detalhada
+
+```bash
+ls -l
+```
+
+Mostra informações detalhadas sobre cada arquivo:
+
+- permissões;
+- proprietário;
+- tamanho;
+- data de modificação.
+
+---
+
+### Mostrar arquivos ocultos
+
+```bash
+ls -a
+```
+
+Arquivos iniciados por um ponto (`.`) são considerados ocultos no Linux.
+
+---
+
+### Listagem detalhada incluindo arquivos ocultos
+
+```bash
+ls -la
+```
+
+Combina as opções `-l` e `-a`.
+
+---
+
+### Ordenar por data de modificação
+
+```bash
+ls -lrth
+```
+
+Onde:
+
+- `-l` → formato longo (*long listing*);
+- `-r` → ordem inversa (*reverse*);
+- `-t` → ordena pela data de modificação (*time*);
+- `-h` → mostra tamanhos em formato legível (*human readable*), como KB, MB e GB.
+
+---
+
+## Criando um diretório para a Aula 1
+
+Dentro do diretório do aluno, vamos criar uma pasta específica para armazenar os arquivos desta aula.
+
+```bash
+mkdir aula1
+```
+
+Verifique se ela foi criada.
+
+```bash
+ls -lrth
+```
+
+---
+
+Agora entre no diretório.
+
+```bash
+cd aula1
+```
+
+💡 **Dica**
+
+O terminal possui autocompletar utilizando a tecla **TAB**.
+
+Por exemplo, basta digitar
+
+```bash
+cd au
+```
+
+e pressionar **TAB**.
+
+O terminal completará automaticamente para
+
+```bash
+cd aula1
+```
+
+Esse recurso economiza tempo e evita erros de digitação.
+
+---
+
+## 2. Baixando proteínas do UniProt
+
+Agora utilizaremos um arquivo real contendo proteínas.
+
+1. Acesse [UniProt](https://www.uniprot.org/).
+2. Na barra de pesquisa, procure por um organismo, por exemplo *Escherichia coli*.
+3. Filtre ou selecione as proteínas **revisadas** (*reviewed*).
+4. Clique em **Download** e escolha o formato **FASTA**. Em seguida marque a opção de compactar (*compressed*) e baixe o arquivo.
+
+Após o download, abra a pasta atual do terminal WSL utilizando:
+
+```bash
+explorer.exe .
+```
+
+O ponto (`.`) representa o diretório atual.
+
+Esse comando facilita copiar ou mover arquivos entre o Windows e o WSL.
+
+Após copiar o arquivo para o diretório da aula, utilize:
+
+```bash
+ls
+```
+
+Você deverá observar algo semelhante a:
+
+```text
+uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta.gz
+uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta.gz:Zone.Identifier
+```
+
+O arquivo `:Zone.Identifier` pode aparecer quando um arquivo é baixado pelo Windows. Ele contém apenas informações de segurança do sistema operacional e **não faz parte do arquivo FASTA**.
+
+Podemos removê-lo com segurança utilizando:
+
+```bash
+rm uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta.gz:Zone.Identifier
+```
+
+Confirme que restou apenas o arquivo FASTA compactado.
+
+```bash
+ls
+```
+
+---
+
+## 3. Descompactando o arquivo
+
+O arquivo foi baixado compactado (`.gz`).
+
+Para descompactá-lo utilizamos o comando `gunzip` (**GNU unzip**).
+
+```bash
+gunzip uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta.gz
+```
+
+Esse comando remove o arquivo compactado e mantém apenas a versão descompactada.
+
+Caso deseje manter também a versão compactada, utilize:
+
+```bash
+gzip -dk uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta.gz
+```
+
+onde:
+
+- `-d` → descompacta (*decompress*);
+- `-k` → mantém (*keep*) o arquivo original.
+
+---
+
+## 4. Entendendo e visualizando um arquivo FASTA
+
+O formato FASTA armazena sequências biológicas. Cada proteína normalmente possui:
+
+- uma linha de cabeçalho, iniciada por `>`;
+- uma ou mais linhas com a sequência de aminoácidos.
+
+Exemplo:
+
+```text
+>sp|P0A7V8|RS2_ECOLI 30S ribosomal protein S2 OS=Escherichia coli
+MARGKKIGYS...
+```
+
+No cabeçalho, `sp` indica uma entrada revisada do UniProt/Swiss-Prot. A sequência abaixo dele é composta pelos códigos de uma letra dos aminoácidos.
+
+Use `cat` (*concatenate*) para imprimir o arquivo inteiro:
+
+```bash
+cat uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta
+```
+
+Em arquivos grandes, prefira `head` (*cabeça*) e `tail` (*cauda*), que mostram, por padrão, as 10 primeiras e as 10 últimas linhas:
+
+```bash
+head uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta
+tail uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta
+```
+
+Para escolher a quantidade de linhas, use `-n`:
+
+```bash
+head -n 20 uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta
+tail -n 20 uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta
+```
+
+## 5. Renomeando, movendo e removendo arquivos
+
+Um nome curto torna os comandos mais fáceis de ler. `mv` vem de *move* e serve tanto para renomear como para mover arquivos.
+Para renomear:
+
+```bash
+mv uniprotkb_Escherichia_coli_AND_reviewed_2026_07_28.fasta ecoli_reviewed.fasta
+ls
+```
+
+Para mover um arquivo, informe uma pasta como destino:
+
+```bash
+mkdir nova_pasta
+mv ecoli_reviewed.fasta nova_pasta/
+ls
+```
+
+Entre na pasta e confirme que o arquivo foi movido:
+
+```bash
+cd nova_pasta
+ls
+```
+
+`..` representa o diretório imediatamente anterior (a pasta-pai). Portanto, este comando devolve o arquivo à pasta `aula1`:
+
+```bash
+mv ecoli_reviewed.fasta ../
+```
+
+E este comando retorna para a pasta-pai:
+
+```bash
+cd ..
+ls
+```
+
+Para voltar dois níveis, use `../..`; para três, `../../..`.
+
+Para remover a pasta vazia criada no exemplo:
+
+```bash
+rm -r nova_pasta
+```
+
+`rm` vem de *remove*. A opção `-r` significa *recursive*: ela percorre a pasta e remove seu conteúdo junto com a própria pasta. Use-a com cuidado, pois a remoção pelo terminal normalmente não vai para a Lixeira.
+
+## 6. Buscando informações com `grep`
+
+`grep` procura linhas que correspondem a um padrão de texto. A forma geral é:
+
+```bash
+grep "padrão" arquivo
+```
+
+Em um FASTA, cada proteína começa em uma linha de cabeçalho iniciada por `>`. Para mostrar todos os cabeçalhos:
+
+```bash
+grep "^>" ecoli_reviewed.fasta
+```
+
+O símbolo `^` significa “início da linha”; assim, `^>` busca somente linhas cujo primeiro caractere é `>`.
+
+### Contar proteínas
+
+Como há um cabeçalho por proteína, conte os cabeçalhos com `-c`, de *count* (contar):
+
+```bash
+grep -c "^>" ecoli_reviewed.fasta
+```
+
+### Procurar uma proteína pelo nome
+
+```bash
+grep "polymerase" ecoli_reviewed.fasta
+```
+
+Por padrão, a busca diferencia letras maiúsculas e minúsculas. Use `-i` para ignorar essa diferença (*ignore case*):
+
+```bash
+grep -i "polymerase" ecoli_reviewed.fasta
+```
+
+### Exibir contexto ao redor de uma ocorrência
+
+As sequências vêm após o cabeçalho. `-A` (*after*) mostra linhas **depois** da correspondência; `-B` (*before*) mostra linhas **antes** dela:
+
+```bash
+grep -A 1 "rpoB" ecoli_reviewed.fasta
+grep -A 10 "rpoB" ecoli_reviewed.fasta
+grep -B 1 -A 2 "ATPase" ecoli_reviewed.fasta
+```
+
+> Atenção: proteínas longas podem ocupar muitas linhas. `-A 10` não garante a sequência completa; ele apenas mostra as 10 linhas seguintes.
+
+### Procurar mais de um padrão
+
+`-E` ativa expressões regulares estendidas. Nesse modo, `|` significa “ou”:
+
+```bash
+grep -E "ATPase|polymerase|helicase" ecoli_reviewed.fasta
+```
+
+Assim, o comando mostra linhas que contêm **ATPase**, **polymerase** ou **helicase**.
+
+### Mostrar linhas que não contêm um termo
+
+`-v` vem de *invert match*: inverte a seleção e exibe as linhas que **não** correspondem ao padrão.
+
+```bash
+grep -v "hypothetical" ecoli_reviewed.fasta
+```
+
+Em FASTA, esse comando também mostrará linhas de sequência, pois elas normalmente não possuem a palavra pesquisada. Para trabalhar apenas com cabeçalhos, faça primeiro a seleção de linhas iniciadas em `>`.
+
+## 7. Pesquisando vários genes a partir de uma lista
+
+Crie um arquivo de padrões com `nano`, um editor de texto do terminal:
+
+```bash
+nano genes.txt
+```
+
+Digite um termo por linha:
+
+```text
+rpoB
+gyrA
+dnaK
+```
+
+Para salvar no `nano`, pressione `Ctrl + X`, depois `Y` e `Enter`. Confira o arquivo:
+
+```bash
+ls
+cat genes.txt
+```
+
+Use `grep -f` para ler os padrões de um arquivo (*file*), em vez de digitá-los no comando:
+
+```bash
+grep -f genes.txt ecoli_reviewed.fasta
+```
+
+Para contar as linhas retornadas, use o operador `|`, chamado *pipe*. Ele envia a saída do comando à esquerda para o comando à direita. `wc` significa *word count* e `-l` conta linhas:
+
+```bash
+grep -f genes.txt ecoli_reviewed.fasta | wc -l
+```
+
+> Esse total representa linhas encontradas, não necessariamente o número de proteínas, pois um termo pode aparecer em mais de uma linha ou em mais de uma proteína.
+
+## 8. Exemplos finais de filtragem
+
+Contar cabeçalhos que incluem “hypothetical”:
+
+```bash
+grep "^>" ecoli_reviewed.fasta | grep -ic "hypothetical"
+```
+
+O primeiro `grep` limita a saída aos cabeçalhos; o segundo procura o termo e `-c` conta as linhas. A opção `-i` torna a busca independente de maiúsculas e minúsculas.
+
+Entradas revisadas do UniProt usam o prefixo `sp|`:
+
+```bash
+grep "^>sp|" ecoli_reviewed.fasta
+grep -c "^>sp|" ecoli_reviewed.fasta
+```
+
+Entradas não revisadas usam `tr|` (TrEMBL):
+
+```bash
+grep "^>tr|" ecoli_reviewed.fasta
+grep -c "^>tr|" ecoli_reviewed.fasta
+```
+
+Se o arquivo foi baixado com o filtro **reviewed**, é esperado que a busca por `tr|` retorne zero resultados.
+
+
+
+## Conteúdo - Tarde
 
 - Formatos de arquivos
 - Qualidade de sequenciamento
@@ -11,14 +508,9 @@
 - Controle de qualidade
 - Trimagem
 
-## Conteúdo - parte 2
-
-- Conceitos e teoria: montagem de genomas e predição de genes
-- Anotação funcional
-
 ---
 
-## Prática síncrona - parte 1
+## Prática síncrona
 
 Nesta aula, serão usados dados de sequenciamento genômico de *Lactobacillus fermentum*, identificados pela corrida **SRR11011985**. O objetivo é baixar as leituras, avaliar sua qualidade, remover trechos de baixa qualidade e avaliar novamente o resultado.
 
@@ -337,228 +829,15 @@ Compare os relatórios **antes** (`1_fastqc_brutos`) e **depois** (`3_fastqc_tri
 
 ---
 
-# Prática síncrona - parte 2
 
-Após avaliar a qualidade dos dados e realizar a trimagem das leituras, o próximo passo em muitos projetos de sequenciamento é a **montagem do genoma** (*genome assembly*).
 
-A montagem consiste em reconstruir sequências maiores (*contigs*) a partir das leituras obtidas no sequenciamento. Como as tecnologias atuais geram milhões de pequenos fragmentos de DNA, utilizamos programas capazes de identificar regiões de sobreposição entre essas leituras para reconstruir a sequência original do genoma.
 
-Nesta aula utilizaremos o **SPAdes** (*St. Petersburg genome assembler*), um dos montadores mais utilizados para genomas bacterianos.
 
-> Execute os comandos no terminal WSL/Linux. Linhas iniciadas por `#` são comentários e não precisam ser executadas.
 
----
 
-## 1. Voltando para o diretório da Aula 2
 
-Primeiro, volte para o diretório principal da Aula 2:
 
-```bash
-cd ..
-```
 
-A estrutura da pasta deverá estar semelhante a esta:
 
-```text
-(bioinfo) daisy@Daisy:~/Daisy/aula2$ ls
 
-1_fastqc_brutos
-2_trimmomatic
-3_fastqc_trimmed
-SRR11011985
-SRR11011985_1.fastq
-SRR11011985_2.fastq
 
-(bioinfo) daisy@Daisy:~/Daisy/aula2$
-```
-
----
-
-## 2. Criando a pasta da montagem
-
-Crie um diretório para armazenar todos os arquivos produzidos pelo SPAdes:
-
-```bash
-mkdir 4_assembly
-```
-
-Organizar os resultados em diretórios separados facilita a navegação pelos arquivos e evita misturar resultados de diferentes etapas da análise.
-
----
-
-## 3. Verificando a instalação do SPAdes
-
-Antes de iniciar a montagem, confirme se o SPAdes está instalado corretamente:
-
-```bash
-spades.py -v
-```
-
-O resultado esperado é semelhante a:
-
-```text
-(bioinfo) daisy@Daisy:~/Daisy/aula2$ spades.py -v
-SPAdes genome assembler v4.3.0
-(bioinfo) daisy@Daisy:~/Daisy/aula2$
-```
-
-> **Importante:** para que o comando funcione, o ambiente virtual `bioinfo` deve estar ativado. Caso o nome `(bioinfo)` não apareça no início da linha de comando, ative o ambiente novamente:
-
-```bash
-conda activate bioinfo
-```
-
----
-
-## 4. Modos de execução do SPAdes
-
-Assim como outras ferramentas utilizadas ao longo da disciplina, o SPAdes possui diversos parâmetros que modificam seu funcionamento. Eles podem ser consultados utilizando a opção `--help`:
-
-```bash
-spades.py --help
-```
-
-Entre as opções mais utilizadas estão:
-
-| Parâmetro | Função |
-|-----------|--------|
-| `--isolate` | Recomendado para dados de organismos isolados com alta cobertura, como a maioria dos genomas bacterianos. Este será o modo utilizado nesta aula. |
-| `--meta` | Utilizado para montagem de dados metagenômicos, provenientes de comunidades de microrganismos. |
-| `--rna` | Utilizado para dados de RNA-Seq. |
-| `--sc` | Utilizado para dados obtidos por sequenciamento de célula única (*single-cell*). |
-| `--only-error-correction` | Executa apenas a etapa de correção de erros das leituras, sem realizar a montagem. |
-| `--only-assembler` | Executa apenas a montagem, assumindo que as leituras já foram corrigidas. |
-| `--careful` | Reduz o número de mismatches e pequenas inserções/deleções (*indels*) na montagem. **Na versão 4.3.0 do SPAdes, esse parâmetro não pode ser utilizado juntamente com `--isolate`.** |
-
-Nesta aula utilizaremos o parâmetro `--isolate`, pois os dados analisados correspondem ao genoma de uma bactéria isolada (*Lactobacillus fermentum*), exatamente o tipo de dado para o qual esse modo foi desenvolvido.
-
----
-
-## 5. Executando a montagem (não execute este comando neste momento)
-
-O comando básico para executar o SPAdes é:
-
-```bash
-spades.py \
-    --isolate \
-    -1 2_trimmomatic/SRR11011985_1_paired.fastq \
-    -2 2_trimmomatic/SRR11011985_2_paired.fastq \
-    -o 4_assembly \
-    -t 4 \
-    -k auto
-```
-
-Entretanto, montagens podem demorar vários minutos ou até horas, dependendo do tamanho do genoma e da quantidade de dados.
-
-Se executarmos o comando normalmente, o terminal permanecerá ocupado durante todo o processamento. Caso o terminal seja fechado, a montagem será interrompida.
-
-Para evitar esse problema, utilizaremos o comando `nohup`, que permite executar programas em segundo plano.
-
----
-
-## 6. Executando o SPAdes com `nohup` (execute este comando neste momento)
-
-O `nohup` (*no hang up*) permite que um programa continue sendo executado mesmo após o fechamento do terminal.
-
-Além disso, utilizaremos recursos do Linux para salvar todas as mensagens produzidas durante a execução em um arquivo de log.
-
-```bash
-nohup spades.py \
-    --isolate \
-    -1 2_trimmomatic/SRR11011985_1_paired.fastq \
-    -2 2_trimmomatic/SRR11011985_2_paired.fastq \
-    -o 4_assembly \
-    -t 4 \
-    -k auto \
-    > spades.log 2>&1 &
-```
-
-Após executar o comando, o terminal será liberado imediatamente, enquanto a montagem continuará sendo executada em segundo plano.
-
----
-
-## 7. Entendendo o comando
-
-| Elemento | Função |
-|----------|--------|
-| `nohup` | Mantém o programa em execução mesmo que o terminal seja fechado. |
-| `spades.py` | Executa o montador SPAdes. |
-| `--isolate` | Indica ao SPAdes que os dados correspondem ao genoma de um organismo isolado, modo recomendado para a maioria dos genomas bacterianos. |
-| `-1` | Arquivo FASTQ contendo as leituras *forward* (R1). |
-| `-2` | Arquivo FASTQ contendo as leituras *reverse* (R2). |
-| `-o 4_assembly` | Define o diretório onde todos os resultados da montagem serão armazenados. |
-| `-t 4` | Utiliza até quatro núcleos de processamento (*threads*). |
-| `-k auto` | Permite que o SPAdes escolha automaticamente os tamanhos de *k-mers* mais adequados para o comprimento das leituras. |
-| `> spades.log` | Redireciona todas as mensagens exibidas na tela para o arquivo `spades.log`. |
-| `2>&1` | Faz com que as mensagens de erro também sejam gravadas no mesmo arquivo de log. |
-| `&` | Executa o programa em segundo plano, liberando o terminal para outros comandos. |
-
-Durante a execução, é possível acompanhar o progresso observando o arquivo de log:
-
-```bash
-tail -f spades.log
-```
-
-Para interromper a visualização do log, pressione:
-
-```text
-Ctrl + C
-```
-
-Isso **não interrompe** a montagem; apenas fecha a visualização do arquivo.
-
----
-
-## Organização esperada da pasta `aula2`
-
-```text
-aula2/
-├── SRR11011985_1.fastq
-├── SRR11011985_2.fastq
-├── 1_fastqc_brutos/
-│   ├── SRR11011985_1_fastqc.html
-│   ├── SRR11011985_1_fastqc.zip
-│   ├── SRR11011985_2_fastqc.html
-│   └── SRR11011985_2_fastqc.zip
-├── 2_trimmomatic/
-│   ├── SRR11011985_1_paired.fastq
-│   ├── SRR11011985_1_unpaired.fastq
-│   ├── SRR11011985_2_paired.fastq
-│   └── SRR11011985_2_unpaired.fastq
-├── 3_fastqc_trimmed/
-│   ├── SRR11011985_1_paired_fastqc.html
-│   ├── SRR11011985_1_paired_fastqc.zip
-│   ├── SRR11011985_2_paired_fastqc.html
-│   └── SRR11011985_2_paired_fastqc.zip
-└── 4_assembly/
-    ├── contigs.fasta
-    ├── scaffolds.fasta
-    ├── assembly_graph.fastg
-    ├── assembly_graph_with_scaffolds.gfa
-    ├── before_rr.fasta
-    ├── corrected/
-    ├── K21/
-    ├── K33/
-    ├── K55/
-    ├── K77/
-    ├── misc/
-    ├── params.txt
-    ├── spades.log
-    └── warnings.log
-```
-
-> A quantidade de arquivos e pastas pode variar dependendo da versão do SPAdes e dos parâmetros utilizados. Os arquivos mais importantes para as próximas etapas serão `contigs.fasta` e `scaffolds.fasta`, que contêm as sequências montadas.
-
----
-
-# Atividade assíncrona
-
-### Relatório de avaliação da qualidade de dados de sequenciamento e impacto da trimagem
-
-Após realizar análises da parte 1 da aula síncrona, responda às seguintes questões:
-
-1. Qual era o objetivo da atividade?
-2. Apresente as figuras do FastQC (antes e após a trimagem) e descreva os principais resultados observados. 
-3. Comparação entre os resultados antes e após a trimagem: Quais métricas já apresentavam boa qualidade antes da trimagem? Quais métricas melhoraram após a trimagem? Alguma métrica permaneceu indicando problemas? A trimagem alterou significativamente o comprimento das reads? Como isso pode impactar análises posteriores?
-
----

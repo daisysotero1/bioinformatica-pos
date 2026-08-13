@@ -30,16 +30,15 @@ ls -lrth
 A estrutura da pasta deverá estar semelhante a esta:
 
 ```text
-(bioinfo) daisy@Daisy:~/Daisy/aula2$ ls
+(bioinfo) daisy@Daisy:~/Daisy/aula2_parte2$ ls -lrth
+total 1.4G
 
-1_fastqc_brutos
-2_trimmomatic
-3_fastqc_trimmed
-SRR11011985
-SRR11011985_1.fastq
-SRR11011985_2.fastq
-
-(bioinfo) daisy@Daisy:~/Daisy/aula2$
+drwxr-xr-x 2 daisy daisy 4.0K Aug 13 14:01 SRR11011985
+-rw-r--r-- 1 daisy daisy 675M Aug 13 14:02 SRR11011985_2.fastq
+-rw-r--r-- 1 daisy daisy 675M Aug 13 14:02 SRR11011985_1.fastq
+drwxr-xr-x 2 daisy daisy 4.0K Aug 13 14:05 1_fastqc_brutos
+drwxr-xr-x 2 daisy daisy 4.0K Aug 13 14:08 2_trimmomatic
+drwxr-xr-x 2 daisy daisy 4.0K Aug 13 14:11 3_fastqc_trimmed
 ```
 
 ---

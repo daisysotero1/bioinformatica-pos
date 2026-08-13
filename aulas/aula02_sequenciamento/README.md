@@ -507,7 +507,12 @@ Nesta aula, serão usados dados de sequenciamento genômico de *Lactobacillus fe
 
 ## 1. Criando o diretório da Aula 2
 
-Entre na pasta principal criada na Aula 1. Substitua `Daisy` pelo nome que você escolheu para sua pasta:
+Entre na pasta principal criada anteriormente. Substitua `Daisy` pelo nome que você escolheu para sua pasta - caso tenha saído do WSL:
+
+```bash
+cd Daisy
+```
+ou, caso esteja no diretório da parte 1 (`aula2_parte1`), digite no terminal:
 
 ```bash
 cd Daisy

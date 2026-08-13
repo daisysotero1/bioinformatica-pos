@@ -15,7 +15,7 @@ Departamento de Bioquímica e Biotecnologia.
 
 | Data | Aula | Material |
 |------|------|----------|
-|19/08 (Quarta) |Introdução à Bioinformática|[Abrir](aulas/aula01_introducao/README.md)|
+|19/08 (Quarta) |Teoria: Introdução à Bioinformática, sequenciamento e conceitos|[Abrir](aulas/aula01_introducao/README.md)|
 |21/08 (Sexta) |Introdução ao terminal, controle de qualidade|[Abrir](aulas/aula02_sequenciamento/README.md)|
 |26/08 (Quarta) |Teoria: Montagem de novo e avaliação do assembly|[Abrir](aulas/aula03_montagem/README.md)|
 |28/08 (Sexta) |Prática: Montagem no spades e avaliação da qualidade da montagem|[Abrir](aulas/aula04_montagem_pratica/README.md)|

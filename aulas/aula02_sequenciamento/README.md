@@ -153,7 +153,7 @@ Onde:
 
 ---
 
-## Criando um diretório para a Aula 1
+## Criando um diretório para a Aula 2 - parte 1
 
 Dentro do diretório do aluno, vamos criar uma pasta específica para armazenar os arquivos desta aula.
 

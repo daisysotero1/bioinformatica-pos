@@ -1,4 +1,4 @@
-# Bioinformática - Gênomica
+# Bioinformática
 
 Material da disciplina Pós-Graduação de Bioinformática da Universidade Estadual de Londrina (UEL).
 

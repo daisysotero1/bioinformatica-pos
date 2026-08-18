@@ -29,7 +29,7 @@ Referencias:
 
 ## Atividade assíncrona - Manhã
 
-### Leitura de artigo científico - Escolha pelo menos 1
+### Leitura de artigo científico - Escolha 1 artigo
 
 Aswal, M., Singhal, N. & Kumar, M. Genomic analysis of phylogroup D Escherichia coli strains using novel de-novo reference-based guided assembly. Sci Data 10, 573 (2023). https://doi.org/10.1038/s41597-023-02444-0
 
